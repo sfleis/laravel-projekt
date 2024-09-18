@@ -1,7 +1,7 @@
 <x-layout>
     <div class="post-container py-12">
         <a href="{{ route('post.create') }}" class="new-post-btn">
-            New Post It
+            New Post-it
         </a>
         <div class="posts">
             @foreach ($posts as $post)

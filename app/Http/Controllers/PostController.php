@@ -13,11 +13,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::query()
-        ->where('user_id',request()->user()->id)
-        ->orderBy('created_at', 'desc')->paginate();
+            ->orderBy('created_at', 'desc')
+            ->paginate();
         return view('post.index', ['posts' => $posts]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -32,21 +31,24 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'post' => ['required','string']
+            'post' => ['required', 'string']
         ]);
-        $data['user_id'] = $request->user()->id;
+    
+        // Set a default user ID if you have a specific user or a dummy user
+        $data['user_id'] = 1; // Replace with a valid default user ID
+    
         $post = Post::create($data);
-        return to_route('post.show', $post)->with('message', 'Post It was successfully created');
+    
+        return to_route('post.show', $post)->with('message', 'Post was successfully created');
     }
+    
+    
 
     /**
      * Display the specified resource.
      */
     public function show(Post $post)
     {
-        if ($post->user_id !== request()->user()->id){
-            abort(403);
-        }
         return view('post.show', ['post' => $post]);
     }
 
@@ -55,9 +57,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if ($post->user_id !== request()->user()->id){
-            abort(403);
-        }
         return view('post.edit', ['post' => $post]);
     }
 
@@ -66,15 +65,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        if ($post->user_id !== request()->user()->id){
-            abort(403);
-        }
         $data = $request->validate([
-            'post' => ['required','string']
+            'post' => ['required', 'string']
         ]);
-       
+    
         $post->update($data);
-        return to_route('post.show', $post)->with('message', 'Post It - updated!');
+        return to_route('post.show', $post)->with('message', 'Post updated successfully!');
     }
 
     /**
@@ -82,11 +78,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->user_id !== request()->user()->id){
-            abort(403);
-        }
         $post->delete();
-        return to_route('post.index')->with('message', 'Post It - deleted!');
-
+        return to_route('post.index')->with('message', 'Post deleted successfully!');
     }
 }

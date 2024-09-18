@@ -19,7 +19,7 @@
 .new-post-btn {
   display: block;
   margin: 0 auto 40px; 
-  background-color: #4f46e5;
+  background-color: #29292c;
   color: white;
   padding: 12px 36px;
   border-radius: 8px;
@@ -61,15 +61,20 @@
 }
 
 .post {
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: #fff9c4; 
+  border-radius: 4px; 
   width: 300px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
   transition: all 0.3s ease;
   cursor: pointer;
-  text-decoration: none;
-  color: #1e293b;
+  color: #374151; 
+  transform: rotate(-3deg); 
+}
+
+.post:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+  transform: rotate(-3deg) translateY(-5px); 
 }
 
 .post:hover {
@@ -103,7 +108,16 @@
 }
 
 .post-buttons .post-edit-button {
-  background-color: #3b82f6; 
+  background-color: #4caf50; /* A subtle green for the 'View' button */
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-right: 5px; /* Small space between buttons */
 }
 
 .post-buttons .post-edit-button:hover {
@@ -137,6 +151,7 @@
 .post-date {
   margin-top: 10px;
   font-size: 12px;
+  padding: 20px;
   font-style: italic;
   color: #6b7280;
 }
@@ -149,3 +164,24 @@
   margin-bottom: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.back-home-btn {
+  display: inline-block;
+  background-color: #29292c; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-home-btn:hover {
+  background-color: #4338ca; 
+  transform: translateY(-2px); 
+}
+
+
+

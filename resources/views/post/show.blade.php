@@ -16,4 +16,10 @@
                 {{ $post->post }}
             </div>
         </div>
-    </div></x-layout>
+        
+        <!-- Back to All Post-its button -->
+        <a href="{{ route('post.index') }}" class="back-home-btn">
+            Back to All Post-its
+        </a>
+    </div>
+</x-layout>
